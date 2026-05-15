@@ -156,3 +156,31 @@
     color: var(--color-foreground);
   }
 }
+
+/* Story site additions */
+.font-display { font-family: 'Playfair Display', serif; }
+.font-body { font-family: 'DM Sans', sans-serif; }
+
+html { background: var(--night-deep); scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--night-deep); color: var(--cream); overflow-x: hidden; }
+
+@keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+.star { position: absolute; background: var(--cream); border-radius: 9999px; animation: twinkle var(--dur, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+
+@keyframes float-slow { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+.float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+@keyframes pulse-glow { 0%,100% { text-shadow: 0 0 20px color-mix(in oklab, var(--rose) 40%, transparent), 0 0 40px color-mix(in oklab, var(--rose) 20%, transparent); } 50% { text-shadow: 0 0 35px color-mix(in oklab, var(--rose) 70%, transparent), 0 0 70px color-mix(in oklab, var(--rose) 40%, transparent); } }
+.pulse-rose { animation: pulse-glow 3.5s ease-in-out infinite; }
+
+.gold-text { color: var(--gold); text-shadow: 0 0 30px color-mix(in oklab, var(--gold) 35%, transparent); }
+.rose-text { color: var(--rose); }
+.cream-text { color: var(--cream); }
+
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.15); } 50% { transform: scale(1); } 75% { transform: scale(1.1); } }
+.heartbeat { animation: heartbeat 1.4s ease-in-out infinite; }
+
+@keyframes typewriter-cursor { 0%, 50% { opacity: 1 } 51%, 100% { opacity: 0 } }
+.cursor::after { content: '|'; animation: typewriter-cursor 1s step-end infinite; margin-left: 2px; color: var(--gold); }
+
+.vignette { background: radial-gradient(ellipse at center, transparent 40%, var(--night-deep) 100%); }
