@@ -304,8 +304,13 @@ function Finale() {
       ref={ref}
       className="relative flex min-h-[200vh] w-full flex-col items-center justify-start overflow-hidden"
     >
-      <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center px-6">
-        <Starfield count={200} />
+      <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden px-6">
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-center opacity-60"
+          style={{ backgroundImage: `url(${starsImg})` }}
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[color:var(--night-deep)]/70 via-[color:var(--night-deep)]/40 to-[color:var(--night-deep)]" />
+        <Starfield count={120} />
         <motion.div
           style={{ scale: yearScale, opacity: yearOpacity }}
           className="flex items-center gap-6 font-display text-2xl text-[color:var(--cream)]/60 md:gap-10 md:text-4xl"
