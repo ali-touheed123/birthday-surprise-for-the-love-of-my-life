@@ -385,7 +385,7 @@ function StoryPage() {
           index="II"
           title="The Last Desk"
           date="14 September 2021 · morning"
-          visual={<ClassroomVisual />}
+          visual={<PhotoFrame src={classroomImg} alt="An empty classroom with morning light pouring through the open door" />}
         >
           <p>
             I was at the back. The door behind me, the world ahead, none of it
@@ -406,7 +406,7 @@ function StoryPage() {
           index="III"
           title="The Heart That Wanted Out"
           date="the days that followed"
-          visual={<HeartVisual />}
+          visual={<PhotoFrame src={silhouetteImg} alt="Silhouette of a girl by a window in golden afternoon light" ratio="4/3" />}
         >
           <p>
             After that morning I moved to the front. Not for the lessons — for the
@@ -439,7 +439,7 @@ function StoryPage() {
           index="V"
           title="The Water Bottle"
           date="a free period"
-          visual={<BottleVisual />}
+          visual={<PhotoFrame src={bottleImg} alt="Two hands holding a water bottle together in a school corridor" ratio="4/3" />}
         >
           <p>
             I panicked. I actually slapped my friend's arm and hissed —{" "}
@@ -460,7 +460,7 @@ function StoryPage() {
           index="VI"
           title="And Then She Left"
           date="late 2021"
-          visual={<ChairVisual />}
+          visual={<PhotoFrame src={chairImg} alt="A single empty chair beside a desk in a quiet classroom" ratio="4/3" />}
         >
           <p>
             One day the corner chair was empty. The next day too. And the next.
@@ -498,7 +498,7 @@ function StoryPage() {
           index="VIII"
           title="Sketches & Secrets"
           date="2022 — 2024"
-          visual={<SketchbookVisual />}
+          visual={<PhotoFrame src={journalImg} alt="A worn leather journal tied with twine beside folded handwritten letters and a fountain pen" ratio="4/3" />}
         >
           <p>
             I started saving every status you posted. Not in a strange way — in
