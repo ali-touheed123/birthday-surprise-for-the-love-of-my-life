@@ -3,6 +3,30 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Starfield } from "@/components/story/Starfield";
 import { Act } from "@/components/story/Act";
+import classroomImg from "@/assets/classroom.jpg";
+import bottleImg from "@/assets/bottle.jpg";
+import chairImg from "@/assets/chair.jpg";
+import journalImg from "@/assets/journal.jpg";
+import starsImg from "@/assets/stars.jpg";
+import silhouetteImg from "@/assets/silhouette.jpg";
+
+function PhotoFrame({ src, alt, ratio = "16/10" }: { src: string; alt: string; ratio?: string }) {
+  return (
+    <div
+      className="group relative mx-auto w-full max-w-2xl overflow-hidden rounded-sm border border-[color:var(--gold)]/15 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)]"
+      style={{ aspectRatio: ratio }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-[6000ms] ease-out group-hover:scale-105"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[color:var(--night-deep)]/80 via-transparent to-[color:var(--night-deep)]/30" />
+      <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-[color:var(--cream)]/5" />
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/")({
   component: StoryPage,
@@ -280,8 +304,13 @@ function Finale() {
       ref={ref}
       className="relative flex min-h-[200vh] w-full flex-col items-center justify-start overflow-hidden"
     >
-      <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center px-6">
-        <Starfield count={200} />
+      <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden px-6">
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-center opacity-60"
+          style={{ backgroundImage: `url(${starsImg})` }}
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[color:var(--night-deep)]/70 via-[color:var(--night-deep)]/40 to-[color:var(--night-deep)]" />
+        <Starfield count={120} />
         <motion.div
           style={{ scale: yearScale, opacity: yearOpacity }}
           className="flex items-center gap-6 font-display text-2xl text-[color:var(--cream)]/60 md:gap-10 md:text-4xl"
@@ -361,7 +390,7 @@ function StoryPage() {
           index="II"
           title="The Last Desk"
           date="14 September 2021 · morning"
-          visual={<ClassroomVisual />}
+          visual={<PhotoFrame src={classroomImg} alt="An empty classroom with morning light pouring through the open door" />}
         >
           <p>
             I was at the back. The door behind me, the world ahead, none of it
@@ -382,7 +411,7 @@ function StoryPage() {
           index="III"
           title="The Heart That Wanted Out"
           date="the days that followed"
-          visual={<HeartVisual />}
+          visual={<PhotoFrame src={silhouetteImg} alt="Silhouette of a girl by a window in golden afternoon light" ratio="4/3" />}
         >
           <p>
             After that morning I moved to the front. Not for the lessons — for the
@@ -415,7 +444,7 @@ function StoryPage() {
           index="V"
           title="The Water Bottle"
           date="a free period"
-          visual={<BottleVisual />}
+          visual={<PhotoFrame src={bottleImg} alt="Two hands holding a water bottle together in a school corridor" ratio="4/3" />}
         >
           <p>
             I panicked. I actually slapped my friend's arm and hissed —{" "}
@@ -436,7 +465,7 @@ function StoryPage() {
           index="VI"
           title="And Then She Left"
           date="late 2021"
-          visual={<ChairVisual />}
+          visual={<PhotoFrame src={chairImg} alt="A single empty chair beside a desk in a quiet classroom" ratio="4/3" />}
         >
           <p>
             One day the corner chair was empty. The next day too. And the next.
@@ -472,21 +501,22 @@ function StoryPage() {
 
         <Act
           index="VIII"
-          title="Sketches & Secrets"
+          title="Letters I Never Sent"
           date="2022 — 2024"
-          visual={<SketchbookVisual />}
+          visual={<PhotoFrame src={journalImg} alt="A worn leather journal tied with twine beside folded handwritten letters and a fountain pen" ratio="4/3" />}
         >
           <p>
-            I started saving every status you posted. Not in a strange way — in
-            the only way I knew how to keep something that wasn't mine to keep.
+            I started writing things down. Small notes at first — a sentence on
+            the back of a receipt, a paragraph in the margin of a notebook. Things
+            I wanted you to know but never said out loud.
           </p>
           <p>
-            Then I started drawing them. Page after page. Some are bad. Some I'm
-            quietly proud of. All of them are folded carefully into a book I
-            haven't shown anyone. I don't think I ever will.
+            Some of them turned into letters. Folded carefully, tied with string,
+            kept in a drawer that doesn't open for anyone else. I never sent them.
+            I don't think I ever will.
           </p>
           <p className="font-body text-base text-[color:var(--cream)]/70">
-            They were never meant to be seen. They were meant to prove, to me,
+            They were never meant to be read. They were meant to prove, to me,
             that I was paying attention.
           </p>
         </Act>
