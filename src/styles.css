@@ -63,8 +63,22 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --background: oklch(0.08 0.02 280);
+  --foreground: oklch(0.96 0.02 80);
+  --night: oklch(0.08 0.02 280);
+  --night-deep: oklch(0.04 0.015 280);
+  --gold: oklch(0.82 0.13 80);
+  --gold-soft: oklch(0.72 0.10 75);
+  --rose: oklch(0.78 0.12 15);
+  --rose-soft: oklch(0.68 0.09 12);
+  --cream: oklch(0.96 0.02 80);
+  --color-night: var(--night);
+  --color-night-deep: var(--night-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-rose: var(--rose);
+  --color-rose-soft: var(--rose-soft);
+  --color-cream: var(--cream);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
