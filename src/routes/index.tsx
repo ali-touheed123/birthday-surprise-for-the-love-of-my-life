@@ -496,21 +496,22 @@ function StoryPage() {
 
         <Act
           index="VIII"
-          title="Sketches & Secrets"
+          title="Letters I Never Sent"
           date="2022 — 2024"
           visual={<PhotoFrame src={journalImg} alt="A worn leather journal tied with twine beside folded handwritten letters and a fountain pen" ratio="4/3" />}
         >
           <p>
-            I started saving every status you posted. Not in a strange way — in
-            the only way I knew how to keep something that wasn't mine to keep.
+            I started writing things down. Small notes at first — a sentence on
+            the back of a receipt, a paragraph in the margin of a notebook. Things
+            I wanted you to know but never said out loud.
           </p>
           <p>
-            Then I started drawing them. Page after page. Some are bad. Some I'm
-            quietly proud of. All of them are folded carefully into a book I
-            haven't shown anyone. I don't think I ever will.
+            Some of them turned into letters. Folded carefully, tied with string,
+            kept in a drawer that doesn't open for anyone else. I never sent them.
+            I don't think I ever will.
           </p>
           <p className="font-body text-base text-[color:var(--cream)]/70">
-            They were never meant to be seen. They were meant to prove, to me,
+            They were never meant to be read. They were meant to prove, to me,
             that I was paying attention.
           </p>
         </Act>
