@@ -3,6 +3,30 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Starfield } from "@/components/story/Starfield";
 import { Act } from "@/components/story/Act";
+import classroomImg from "@/assets/classroom.jpg";
+import bottleImg from "@/assets/bottle.jpg";
+import chairImg from "@/assets/chair.jpg";
+import journalImg from "@/assets/journal.jpg";
+import starsImg from "@/assets/stars.jpg";
+import silhouetteImg from "@/assets/silhouette.jpg";
+
+function PhotoFrame({ src, alt, ratio = "16/10" }: { src: string; alt: string; ratio?: string }) {
+  return (
+    <div
+      className="group relative mx-auto w-full max-w-2xl overflow-hidden rounded-sm border border-[color:var(--gold)]/15 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)]"
+      style={{ aspectRatio: ratio }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-[6000ms] ease-out group-hover:scale-105"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[color:var(--night-deep)]/80 via-transparent to-[color:var(--night-deep)]/30" />
+      <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-[color:var(--cream)]/5" />
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/")({
   component: StoryPage,
