@@ -185,11 +185,8 @@ function Finale() {
     
     if (latest > 0.4 && !hasFired) {
       setHasFired(true);
-      const duration = 5000;
+      const duration = 10000;
       const animationEnd = Date.now() + duration;
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
-
-      const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
       const interval: any = setInterval(function() {
         const timeLeft = animationEnd - Date.now();
@@ -200,11 +197,53 @@ function Finale() {
 
         const particleCount = 50 * (timeLeft / duration);
         
-        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.4, 0.6), y: 0 } });
-        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: 0 } });
-        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: 0 } });
-        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.3, 0.7), y: 0 } });
-      }, 250);
+        // From Top (Falling rain - very dense)
+        confetti({ 
+          particleCount: particleCount * 1.5, 
+          spread: 120, 
+          startVelocity: 20,
+          origin: { x: Math.random(), y: -0.1 },
+          colors: ['#D4AF37', '#FFD700', '#FF3366', '#FFFFFF']
+        });
+
+        // From Left Cannon
+        confetti({
+          particleCount: particleCount * 1.2,
+          angle: 60,
+          spread: 70,
+          origin: { x: 0, y: 0.5 },
+          colors: ['#D4AF37', '#FF3366', '#FFD700']
+        });
+
+        // From Right Cannon
+        confetti({
+          particleCount: particleCount * 1.2,
+          angle: 120,
+          spread: 70,
+          origin: { x: 1, y: 0.5 },
+          colors: ['#D4AF37', '#FF3366', '#FFD700']
+        });
+
+        // From Bottom (Bursting up like a fountain)
+        confetti({
+          particleCount: particleCount * 2,
+          gravity: 0.9,
+          scalar: 1.3,
+          spread: 120,
+          startVelocity: 45,
+          origin: { x: 0.5, y: 1.1 },
+          colors: ['#FFFFFF', '#FFD700', '#FF3366', '#D4AF37']
+        });
+
+        // Constant Center bursts
+        confetti({
+          particleCount: 20,
+          spread: 360,
+          startVelocity: 25,
+          origin: { x: 0.5, y: 0.4 },
+          colors: ['#FFD700', '#FFFFFF']
+        });
+      }, 200);
     } else if (latest < 0.2 && hasFired) {
       setHasFired(false);
     }
