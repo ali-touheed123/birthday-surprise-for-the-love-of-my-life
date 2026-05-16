@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -160,6 +161,7 @@
 /* Story site additions */
 .font-display { font-family: 'Playfair Display', serif; }
 .font-body { font-family: 'DM Sans', sans-serif; }
+.font-accent { font-family: 'Outfit', sans-serif; }
 
 html { background: var(--night-deep); scroll-behavior: smooth; }
 body { font-family: 'DM Sans', sans-serif; background: var(--night-deep); color: var(--cream); overflow-x: hidden; }
@@ -184,3 +186,71 @@ body { font-family: 'DM Sans', sans-serif; background: var(--night-deep); color:
 .cursor::after { content: '|'; animation: typewriter-cursor 1s step-end infinite; margin-left: 2px; color: var(--gold); }
 
 .vignette { background: radial-gradient(ellipse at center, transparent 40%, var(--night-deep) 100%); }
+
+/* Aurora Background Effect */
+@keyframes aurora {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  33% { transform: translate(10%, 10%) scale(1.2); opacity: 0.5; }
+  66% { transform: translate(-5%, 15%) scale(0.9); opacity: 0.4; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+}
+
+.aurora-glow {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(100px);
+  opacity: 0.4;
+}
+
+.aurora-1 {
+  background: radial-gradient(circle at 20% 30%, var(--gold-soft), transparent 50%);
+  animation: aurora 20s ease-in-out infinite;
+}
+
+.aurora-2 {
+  background: radial-gradient(circle at 80% 70%, var(--rose-soft), transparent 50%);
+  animation: aurora 25s ease-in-out infinite reverse;
+}
+
+.aurora-3 {
+  background: radial-gradient(circle at 50% 50%, oklch(0.3 0.1 280), transparent 50%);
+  animation: aurora 30s ease-in-out infinite 2s;
+}
+
+/* Premium Glassmorphism */
+.glass-panel {
+  background: color-mix(in oklab, var(--night-deep) 40%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in oklab, var(--gold) 15%, transparent);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-panel-hover:hover {
+  border-color: color-mix(in oklab, var(--gold) 30%, transparent);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7), 0 0 15px color-mix(in oklab, var(--gold) 10%, transparent);
+  transition: all 0.5s ease;
+}
+
+/* Cinematic Lettering */
+@keyframes letter-spacing {
+  from { letter-spacing: -0.2em; opacity: 0; filter: blur(10px); }
+  to { letter-spacing: normal; opacity: 1; filter: blur(0); }
+}
+
+.animate-cinematic {
+  animation: letter-spacing 1.5s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+.perspective-text {
+  perspective: 1000px;
+}
+
+.perspective-text span {
+  display: inline-block;
+  transform-style: preserve-3d;
+}
