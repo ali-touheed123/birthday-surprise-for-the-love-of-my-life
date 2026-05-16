@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import { Starfield } from "@/components/story/Starfield";
 import { Act } from "@/components/story/Act";
+import { RosePetals } from "@/components/story/RosePetals";
 
 import classroomImg from "@/assets/classroom.jpg";
 import bottleImg from "@/assets/bottle.png";
@@ -129,6 +130,7 @@ function Opening() {
             <span className={!showDate ? "cursor" : ""}>{line2}</span>
           </p>
         )}
+
       </motion.div>
       <motion.div
         animate={{ opacity: [0.3, 1, 0.3], y: [0, 8, 0] }}
@@ -299,6 +301,7 @@ function Finale() {
             — Ali
           </p>
         </motion.div>
+
       </div>
     </section>
   );
@@ -358,7 +361,7 @@ function FinalNote() {
         <div className="my-16 h-px w-24 mx-auto bg-gradient-to-r from-transparent via-[color:var(--gold)]/50 to-transparent" />
 
         <p className="font-display text-3xl italic text-[color:var(--rose)] md:text-4xl">
-          One last thing…
+          One last thing… <span className="inline-block animate-pulse">🌹</span>
         </p>
 
         <p className="mt-8 font-body text-base leading-relaxed text-[color:var(--cream)]/80">
@@ -395,6 +398,7 @@ export default function StoryPage() {
       {/* Persistent star field behind everything */}
       <div className="pointer-events-none fixed inset-0 z-0">
         <Starfield count={120} />
+        <RosePetals count={60} />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.18_0.04_280)/40%,transparent_60%)]" />
       </div>
 
@@ -601,7 +605,7 @@ export default function StoryPage() {
         >
           <p>
             Honestly, I believe Allah chose a beautiful day to bring someone like you into this world.
-            Today is different. Because today… is yours.
+            Today is different. Because today… is yours. <span className="inline-block scale-125">✨🌷</span>
           </p>
           <p className="font-display text-2xl italic gold-text md:text-3xl">
             No stress. No worries. Just full princess energy.
