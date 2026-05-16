@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
@@ -57,9 +56,7 @@ function PhotoFrame({ src, alt, ratio = "16/10" }: { src: string; alt: string; r
   );
 }
 
-export const Route = createFileRoute("/")({
-  component: StoryPage,
-});
+
 
 function useTypewriter(text: string, start: boolean, speed = 55) {
   const [out, setOut] = useState("");
@@ -353,7 +350,7 @@ function FinalNote() {
   );
 }
 
-function StoryPage() {
+export default function StoryPage() {
   return (
     <main className="relative w-full bg-[color:var(--night-deep)]">
       {/* Persistent star field behind everything */}
