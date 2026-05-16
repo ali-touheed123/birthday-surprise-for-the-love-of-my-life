@@ -5,7 +5,7 @@ import { Starfield } from "@/components/story/Starfield";
 import { Act } from "@/components/story/Act";
 
 import classroomImg from "@/assets/classroom.jpg";
-import bottleImg from "@/assets/bottle.jpg";
+import bottleImg from "@/assets/bottle.png";
 import chairImg from "@/assets/chair.jpg";
 import journalImg from "@/assets/journal.jpg";
 import starsImg from "@/assets/stars.jpg";
