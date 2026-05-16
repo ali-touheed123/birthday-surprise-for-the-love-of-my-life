@@ -12,4 +12,7 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  vite: {
+    base: '/birthday-surprise-for-the-love-of-my-life/',
+  }
 });
