@@ -99,9 +99,9 @@ function Opening() {
         style={{ y: moonY }}
         className="pointer-events-none absolute right-[10%] top-[14%] h-32 w-32 rounded-full bg-gradient-to-br from-[color:var(--cream)]/90 via-[color:var(--gold-soft)]/40 to-transparent blur-md md:h-44 md:w-44"
       />
-      <motion.div style={{ opacity }} className="relative z-10 max-w-4xl text-center">
-        <p className="animate-cinematic mb-14 font-accent text-xs font-semibold italic tracking-[0.6em] text-[color:var(--rose-soft)]/80 uppercase">
-          A cinematic love story
+      <motion.div style={{ opacity }} className="relative z-10 max-w-3xl text-center">
+        <p className="mb-14 font-display text-sm italic tracking-[0.3em] text-[color:var(--rose-soft)]/60">
+          A love story in scroll
         </p>
 
         {showDate && (
@@ -109,33 +109,33 @@ function Opening() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
-            className="mb-24"
+            className="mb-20"
           >
-            <p className="font-accent text-lg font-black uppercase tracking-[0.8em] text-[color:var(--gold)]">
+            <p className="font-body text-base font-bold uppercase tracking-[0.5em] text-[color:var(--gold)]">
               7 September 2021
             </p>
-            <p className="mt-4 font-accent text-[10px] font-bold italic text-[color:var(--cream)]/40 uppercase tracking-[0.5em]">
-              the beginning of forever
+            <p className="mt-3 text-xs italic text-[color:var(--cream)]/40 uppercase tracking-[0.3em]">
+              first day of college
             </p>
-            <div className="mx-auto mt-10 h-px w-32 bg-gradient-to-r from-transparent via-[color:var(--gold)]/40 to-transparent" />
+            <div className="mx-auto mt-8 h-px w-16 bg-gradient-to-r from-transparent via-[color:var(--gold)]/40 to-transparent" />
           </motion.div>
         )}
 
-        <h1 className="font-display text-4xl leading-tight text-[color:var(--cream)] md:text-7xl">
+        <p className="font-display text-3xl leading-snug text-[color:var(--cream)] md:text-5xl">
           <span className={!showLine2 ? "cursor" : ""}>{line1}</span>
-        </h1>
+        </p>
         {showLine2 && (
-          <h2 className="mt-8 font-display text-3xl italic leading-tight text-[color:var(--cream)]/80 md:text-5xl">
+          <p className="mt-4 font-display text-2xl italic leading-snug text-[color:var(--cream)]/80 md:text-4xl">
             <span className={!showDate ? "cursor" : ""}>{line2}</span>
-          </h2>
+          </p>
         )}
       </motion.div>
       <motion.div
         animate={{ opacity: [0.3, 1, 0.3], y: [0, 8, 0] }}
         transition={{ duration: 2.5, repeat: Infinity }}
-        className="absolute bottom-12 z-10 font-accent text-[10px] font-bold uppercase tracking-[0.6em] text-[color:var(--cream)]/50"
+        className="absolute bottom-10 z-10 text-xs uppercase tracking-[0.4em] text-[color:var(--cream)]/60"
       >
-        scroll to immerse ↓
+        scroll to begin ↓
       </motion.div>
     </section>
   );
@@ -157,9 +157,9 @@ function ChatBubbles() {
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ delay: i * 0.2, duration: 0.5 }}
-          className={`max-w-[85%] rounded-2xl px-5 py-3 font-body text-sm md:text-base glass-panel ${b.side === "right"
-            ? "self-end rounded-br-sm border-[color:var(--gold)]/30 text-[color:var(--cream)] shadow-[0_0_15px_rgba(212,175,55,0.1)]"
-            : "self-start rounded-bl-sm border-[color:var(--rose)]/30 text-[color:var(--cream)] shadow-[0_0_15px_rgba(224,33,138,0.1)]"
+          className={`max-w-[85%] rounded-2xl px-5 py-3 font-body text-sm md:text-base ${b.side === "right"
+            ? "self-end rounded-br-sm bg-[color:var(--gold)]/15 text-[color:var(--cream)] border border-[color:var(--gold)]/30 shadow-[0_0_15px_rgba(212,175,55,0.1)]"
+            : "self-start rounded-bl-sm bg-[color:var(--rose)]/15 text-[color:var(--cream)] border border-[color:var(--rose)]/30 shadow-[0_0_15px_rgba(224,33,138,0.1)]"
             }`}
         >
           {b.text}
@@ -174,7 +174,7 @@ function Finale() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
   const yearScale = useTransform(scrollYProgress, [0, 0.3], [0.6, 1]);
   const yearOpacity = useTransform(scrollYProgress, [0, 0.15, 0.3], [0, 1, 0]);
-  
+
   const [showFinal, setShowFinal] = useState(false);
   const [hasFired, setHasFired] = useState(false);
 
@@ -182,13 +182,13 @@ function Finale() {
     if (latest > 0.35 && !showFinal) {
       setShowFinal(true);
     }
-    
+
     if (latest > 0.4 && !hasFired) {
       setHasFired(true);
       const duration = 10000;
       const animationEnd = Date.now() + duration;
 
-      const interval: any = setInterval(function() {
+      const interval: any = setInterval(function () {
         const timeLeft = animationEnd - Date.now();
 
         if (timeLeft <= 0) {
@@ -196,11 +196,11 @@ function Finale() {
         }
 
         const particleCount = 50 * (timeLeft / duration);
-        
+
         // From Top (Falling rain - very dense)
-        confetti({ 
-          particleCount: particleCount * 1.5, 
-          spread: 120, 
+        confetti({
+          particleCount: particleCount * 1.5,
+          spread: 120,
           startVelocity: 20,
           origin: { x: Math.random(), y: -0.1 },
           colors: ['#D4AF37', '#FFD700', '#FF3366', '#FFFFFF']
@@ -282,7 +282,7 @@ function Finale() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
         >
-          <p className="mb-6 font-accent text-xs font-black uppercase tracking-[0.6em] text-[#ffddaa] [text-shadow:0_2px_10px_rgba(0,0,0,0.8)]">
+          <p className="mb-6 text-sm font-bold uppercase tracking-[0.5em] text-[#ffddaa] [text-shadow:0_2px_10px_rgba(0,0,0,0.8)]">
             five years. still here
           </p>
           <h2 className="font-display text-5xl font-black leading-tight text-white [text-shadow:0_4px_20px_rgba(0,0,0,0.9)] md:text-8xl">
@@ -291,11 +291,11 @@ function Finale() {
           <h1 className="pulse-rose mt-4 font-display text-8xl font-black italic leading-none text-[#ff3366] [text-shadow:0_0_30px_rgba(255,51,102,0.6),0_4px_20px_rgba(0,0,0,0.9)] md:text-[11rem]">
             Noor
           </h1>
-          <p className="mt-12 max-w-xl font-body text-xl font-bold italic leading-relaxed text-white [text-shadow:0_2px_15px_rgba(0,0,0,0.9)]">
+          <p className="mt-12 max-w-xl font-body text-lg font-bold italic leading-relaxed text-white [text-shadow:0_2px_15px_rgba(0,0,0,0.9)]">
             Whatever you choose, wherever you go, I am still the boy at the last
             desk, watching the door open.
           </p>
-          <p className="mt-12 font-accent text-xs font-black uppercase tracking-[0.5em] text-[#ffcc00] [text-shadow:0_2px_10px_rgba(0,0,0,0.8)]">
+          <p className="mt-10 font-body text-sm font-bold uppercase tracking-[0.4em] text-[#ffcc00] [text-shadow:0_2px_10px_rgba(0,0,0,0.8)]">
             — Ali
           </p>
         </motion.div>
@@ -318,18 +318,18 @@ function FloatingParticles() {
         <motion.span
           key={p.id}
           initial={{ y: "110vh", opacity: 0, x: 0 }}
-          animate={{ 
-            y: "-10vh", 
-            opacity: [0, 0.8, 0.8, 0], 
-            x: [0, Math.random() * 50 - 25, Math.random() * 50 - 25] 
+          animate={{
+            y: "-10vh",
+            opacity: [0, 0.8, 0.8, 0],
+            x: [0, Math.random() * 50 - 25, Math.random() * 50 - 25]
           }}
           transition={{ duration: p.dur, repeat: Infinity, delay: p.delay, ease: "linear" }}
           className="absolute rounded-full bg-[color:var(--gold)] blur-[1px]"
-          style={{ 
-            left: `${p.left}%`, 
-            width: p.size, 
-            height: p.size, 
-            boxShadow: '0 0 10px var(--gold)' 
+          style={{
+            left: `${p.left}%`,
+            width: p.size,
+            height: p.size,
+            boxShadow: '0 0 10px var(--gold)'
           }}
         />
       ))}
@@ -345,28 +345,28 @@ function FinalNote() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 1 }}
-        className="glass-panel relative max-w-2xl rounded-3xl p-12 md:p-20"
+        className="max-w-xl"
       >
-        <p className="mb-10 font-accent text-[10px] font-black uppercase tracking-[0.6em] text-[color:var(--gold-soft)]">
+        <p className="mb-8 text-xs uppercase tracking-[0.5em] text-[color:var(--gold-soft)]">
           a final note
         </p>
-        <p className="font-body text-xl italic leading-relaxed text-[color:var(--cream)]/90 md:text-2xl">
-          So today, smile a little extra, laugh a little louder. 
+        <p className="font-body text-lg italic leading-relaxed text-[color:var(--cream)]/90 md:text-xl">
+          So today, smile a little extra, laugh a little louder.
           Because you’re not just loved, you’re genuinely appreciated.
         </p>
-        
+
         <div className="my-16 h-px w-24 mx-auto bg-gradient-to-r from-transparent via-[color:var(--gold)]/50 to-transparent" />
-        
-        <p className="font-display text-4xl italic text-[color:var(--rose)] md:text-5xl">
+
+        <p className="font-display text-3xl italic text-[color:var(--rose)] md:text-4xl">
           One last thing…
         </p>
-        
-        <p className="mt-10 font-body text-lg leading-relaxed text-[color:var(--cream)]/80">
+
+        <p className="mt-8 font-body text-base leading-relaxed text-[color:var(--cream)]/80">
           Stay exactly the way you are, that’s already more than enough.
         </p>
-        
-        <p className="mt-8 font-body text-base italic leading-relaxed text-[color:var(--cream)]/60">
-          Sending you an unreasonable amount of love, hugs, and all the good vibes in the universe, 
+
+        <p className="mt-6 font-body text-sm italic leading-relaxed text-[color:var(--cream)]/60">
+          Sending you an unreasonable amount of love, hugs, and all the good vibes in the universe,
           because honestly, you deserve nothing less.
         </p>
       </motion.div>
@@ -376,12 +376,12 @@ function FinalNote() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 1.5 }}
-        className="mt-40 max-w-2xl"
+        className="mt-32 max-w-lg"
       >
-        <p className="font-display text-2xl italic text-[color:var(--gold-soft)]/90 leading-relaxed md:text-3xl">
-          "I love you from the very bottom of my soul. The man who has always 
-          loved you from the silence, without ever hearing your voice or seeing you 
-          a second time. My love remains as constant as the stars, pure and unwavering, 
+        <p className="font-display text-lg italic text-[color:var(--gold-soft)] leading-relaxed">
+          "I love you from the very bottom of my soul. The man who has always
+          loved you from the silence, without ever hearing your voice or seeing you
+          a second time. My love remains as constant as the stars, pure and unwavering,
           even in the quietest of distances."
         </p>
       </motion.div>
@@ -392,16 +392,13 @@ function FinalNote() {
 export default function StoryPage() {
   return (
     <main className="relative w-full bg-[color:var(--night-deep)]">
-      {/* Persistent star field and Aurora behind everything */}
+      {/* Persistent star field behind everything */}
       <div className="pointer-events-none fixed inset-0 z-0">
         <Starfield count={120} />
-        <div className="aurora-glow aurora-1" />
-        <div className="aurora-glow aurora-2" />
-        <div className="aurora-glow aurora-3" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.18_0.04_280)/40%,transparent_60%)]" />
       </div>
 
-      <div className="relative z-10 perspective-text">
+      <div className="relative z-10">
         <Opening />
 
         <Act
@@ -578,21 +575,21 @@ export default function StoryPage() {
           visual={<VideoFrame src={animeVideo} ratio="4/3" />}
         >
           <p>
-            We've talked about my promise, but let's talk about you. That smile of yours, 
-            the one that is absolutely illegal. Your hair, catching the wind and falling across your face, 
-            has always been my biggest melting point. 
+            We've talked about my promise, but let's talk about you. That smile of yours,
+            the one that is absolutely illegal. Your hair, catching the wind and falling across your face,
+            has always been my biggest melting point.
           </p>
           <p className="font-display text-2xl italic rose-text md:text-3xl">
             A heart like a diamond.
           </p>
           <p>
-            Beyond the beauty, it is your essence that stays with me. Having known your character, 
-            your habits, and the depth of your soul over these five years, I know one thing for sure: 
+            Beyond the beauty, it is your essence that stays with me. Having known your character,
+            your habits, and the depth of your soul over these five years, I know one thing for sure:
             you carry a strength that is both soft and absolute.
           </p>
           <p className="mt-4 font-body text-base italic text-[color:var(--gold)]">
-            I see the woman you are becoming—someone who will guide with wisdom and nurture with a love 
-            that knows no bounds. Honestly, any children would be blessed beyond measure to have a mother 
+            I see the woman you are becoming—someone who will guide with wisdom and nurture with a love
+            that knows no bounds. Honestly, any children would be blessed beyond measure to have a mother
             like you to show them the world.
           </p>
         </Act>
@@ -604,14 +601,14 @@ export default function StoryPage() {
         >
           <p>
             Honestly, I believe Allah chose a beautiful day to bring someone like you into this world.
-            Today is different. Because today… is yours. 
+            Today is different. Because today… is yours.
           </p>
           <p className="font-display text-2xl italic gold-text md:text-3xl">
             No stress. No worries. Just full princess energy.
           </p>
           <p>
-            I swear, you have this soft magic about you... the kind that makes everything feel 
-            lighter, calmer, and way happier just by existing. And somehow, without even trying, 
+            I swear, you have this soft magic about you... the kind that makes everything feel
+            lighter, calmer, and way happier just by existing. And somehow, without even trying,
             you've taken a very special place in my heart.
           </p>
         </Act>
